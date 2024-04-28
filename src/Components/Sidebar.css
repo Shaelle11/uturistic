@@ -1,11 +1,18 @@
 .sidebar {
     position: fixed;
     top: 0;
-    right: 0; /* Position on the right side */
+    right: 0;
     width: 250px;
     height: 100%;
-    background-color: #333; /* Sidebar background color */
-    padding-top: 50px; /* Adjust as needed */
+    background-color: #333;
+    padding-top: 50px;
+    z-index: 1000; /* Bring the sidebar above everything else */
+    transition: transform 0.3s ease; /* Add transition for smooth toggle effect */
+    transform: translateX(100%);
+}
+
+.sidebar.active {
+    transform: translateX(0);
 }
 
 .sidebar-links {
@@ -27,5 +34,5 @@
 }
 
 .sidebar-links li a:hover {
-    background-color: #555; /* Hover background color */
+    background-color: #555;
 }
