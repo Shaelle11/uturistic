@@ -1,0 +1,26 @@
+.custom-cursor {
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #725ac1; /* Purple color */
+    pointer-events: none; /* Make cursor non-interactive */
+    mix-blend-mode: screen; /* Blend mode for glowing effect */
+    z-index: 9999; /* Ensure cursor is above other elements */
+    animation: pulse 1.5s infinite alternate; /* Animation for pulsating effect */
+   /* Adjust opacity for glowing effect */
+  }
+  
+  @keyframes pulse {
+    from {
+      transform: scale(0.5);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  body {
+    cursor: none; /* Hide default cursor */
+  }
+  

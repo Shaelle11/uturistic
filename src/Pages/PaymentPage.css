@@ -1,0 +1,50 @@
+/* PaymentPage.css */
+
+.payment-container {
+    max-width: 400px;
+    margin: 7rem auto;
+    padding: 4rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .payment-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .payment-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .payment-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .payment-container p {
+    margin-top: 20px;
+  }
+  
+  .payment-container .paystack-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    text-align: center;
+    background-color: #725ac1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .payment-container .paystack-button:hover {
+    background-color: #307d7e;
+  }
+  

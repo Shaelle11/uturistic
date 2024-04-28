@@ -1,0 +1,87 @@
+.events-section {
+    display: flex;
+    flex-direction: column; /* Arrange items vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center;
+    background-color: #E2E0FF;
+    padding: 2rem 0rem;
+    transition: transform 0.3s ease; 
+}
+
+.section-title {
+    font-size: 2rem; /* Example font size, adjust as needed */
+    margin-bottom: 20px; /* Example margin, adjust as needed */
+    color: #000;
+}
+
+.section-description {
+    font-size: 1.2rem; /* Example font size, adjust as needed */
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.event-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow cards to wrap to next line */
+    justify-content: center; /* Center items horizontally */
+    gap: 60px; /* Example gap between cards, adjust as needed */
+}
+
+.event-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px; /* Example border radius, adjust as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example box shadow, adjust as needed */
+    align-items: center;
+    width: 300px;
+    max-width: 100%; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+   padding: 40px;
+   overflow: hidden;
+}
+
+.event-card:hover {
+    transform: translateY(-5px) scale(1.02); /* Scale up and elevate on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Increase box shadow on hover for a lifted effect */
+}
+
+.event-card img {
+    width: 100%; /* Ensure images fill the card width */
+    height: 100%; /* Maintain aspect ratio */
+    border-radius: 5px; /* Example border radius for images, adjust as needed */
+   object-fit: cover;
+}
+
+.event-details {
+    background-color: #fff;
+    padding: 0rem 2rem 1rem 2rem;
+    height: auto;
+width: 400px;
+}
+
+.event-title {
+        font-size: 1.5rem; /* Example font size, adjust as needed */
+    margin-bottom: 10px; /* Example margin, adjust as needed */
+}
+
+.event-date {
+   
+    font-size: 1rem; /* Example font size, adjust as needed */
+    color: #888; /* Example color for date, adjust as needed */
+}
+
+.learn-more-btn {
+  
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #725ac1; /* Example background color for button, adjust as needed */
+    color: #fff; /* Example color for button text, adjust as needed */
+    text-decoration: none;
+    border-radius: 5px; /* Example border radius for button, adjust as needed */
+    transition: background-color 0.3s ease;
+}
+
+.learn-more-btn:hover {
+    background-color: #5a468d; /* Example background color on hover, adjust as needed */
+}
+
