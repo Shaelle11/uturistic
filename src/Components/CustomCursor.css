@@ -23,4 +23,9 @@
   body {
     cursor: none; /* Hide default cursor */
   }
-  
+  @media (max-width: 630px)  {
+   .custom-cursor{
+      display: none;
+      z-index: 0;
+    }
+}

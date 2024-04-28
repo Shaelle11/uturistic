@@ -83,7 +83,7 @@
     color: white;
 }
 Link{
-    color: white;
+      color: white;
 }
 
 /* Sidebar Styles */
@@ -165,6 +165,7 @@ Link{
     .sidebar-overlay {
         display: block;
         opacity: 0;
+        pointer-events: none;
     }
 
     .sidebar-overlay.active {

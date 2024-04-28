@@ -6,6 +6,7 @@
     background-color: #E2E0FF;
     padding: 2rem 0rem;
     transition: transform 0.3s ease; 
+
 }
 
 .section-title {
@@ -24,7 +25,7 @@
     display: flex;
     flex-wrap: wrap; /* Allow cards to wrap to next line */
     justify-content: center; /* Center items horizontally */
-    gap: 60px; /* Example gap between cards, adjust as needed */
+    width: 100%;
 }
 
 .event-card {
@@ -34,10 +35,11 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Example box shadow, adjust as needed */
     align-items: center;
     width: 300px;
+    padding: 1rem;
     max-width: 100%; 
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
-   padding: 40px;
-   overflow: hidden;
+    overflow: hidden;
+
 }
 
 .event-card:hover {
@@ -49,18 +51,17 @@
     width: 100%; /* Ensure images fill the card width */
     height: 100%; /* Maintain aspect ratio */
     border-radius: 5px; /* Example border radius for images, adjust as needed */
-   object-fit: cover;
 }
 
 .event-details {
     background-color: #fff;
     padding: 0rem 2rem 1rem 2rem;
     height: auto;
-width: 400px;
+width: 100%;
 }
 
 .event-title {
-        font-size: 1.5rem; /* Example font size, adjust as needed */
+        font-size: auto; /* Example font size, adjust as needed */
     margin-bottom: 10px; /* Example margin, adjust as needed */
 }
 
