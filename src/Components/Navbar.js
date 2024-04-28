@@ -13,16 +13,14 @@ function Navbar() {
     return (
         <nav className="navbar">
             <img className={`navbar-logo ${showSidebar ? 'active' : ''}`} width={50} height={50} src={logo} alt="Logo" />
-            <div className={`sidebar-overlay ${showSidebar ? 'active' : ''}`} onClick={toggleSidebar}></div>
+            <div className={`sidebar-overlay ${showSidebar ? 'active' : ''}`}></div>
             <ul className={`nav-links ${showSidebar ? 'active' : ''}`}>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/events">Events</Link></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#about">About</a></li>
                 <li>
-                    {/* Use Link instead of <a> */}
                     <button onClick={() => window.alert('Redirecting to tickets...')}>  <Link to="/payment">Get Your Tickets Now</Link></button>
-                  
                 </li>
             </ul>
             <div className="sidebar-toggle" onClick={toggleSidebar}>
