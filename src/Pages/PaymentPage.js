@@ -1,15 +1,25 @@
 import React, { useState } from 'react';
 import { PaystackButton } from 'react-paystack';
-import './PaymentPage.css'; // Import the CSS file
+import './PaymentPage.css'; 
+import Receipt from '../Components/Receipt';
 
 const PaymentPage = () => {
   const [formData, setFormData] = useState({
-    numberOfTickets: 1,
+    paymentType: 'general', // default payment type
+    numberOfUnits: 1,
     fullName: '',
     email: '',
   });
+  const [paymentSuccessful, setPaymentSuccessful] = useState(false);
+  const prices = {
+    general: 1000,
+    scavenger: 500,
+    displayAds: 3000,
+    vendors: 5000,
+  };
 
-  const [totalAmount, setTotalAmount] = useState(1000);
+  // Calculate total amount based on payment type and number of units
+  const totalAmount = prices[formData.paymentType] * formData.numberOfUnits;
 
   const publicKey = 'pk_live_b05bf0b0e44aa8f20a04529d6d05b4779aebd72b'; // Replace with your Paystack public key
 
@@ -31,25 +41,27 @@ const PaymentPage = () => {
     });
   };
 
-  const onChangeNumberOfTickets = (event) => {
-    const numberOfTickets = parseInt(event.target.value, 10);
-    setFormData({
-      ...formData,
-      numberOfTickets,
-    });
-    setTotalAmount(1000 * numberOfTickets);
-  };
-
+  if (paymentSuccessful) {
+    return <Receipt details={{...formData, amount: totalAmount}} />;
+  }
+   
   return (
-    <div className="payment-container"> {/* Add className for styling */}
+    <div className="payment-container">
       <h2>Buy Tickets</h2>
-      <label htmlFor="numberOfTickets">Number of Tickets:</label>
+      <select name="paymentType" value={formData.paymentType} onChange={onChangeInput}>
+        <option value="general">General Tickets (₦1000 each)</option>
+        <option value="scavenger">Scavenger Hunt (₦500 each)</option>
+        <option value="displayAds">Display Ads (₦3000 each)</option>
+        <option value="vendors">Vendors (₦5000 each)</option>
+      </select>
+
+      <label htmlFor="numberOfUnits">Number of Units:</label>
       <input
         type="number"
-        id="numberOfTickets"
-        name="numberOfTickets"
-        value={formData.numberOfTickets}
-        onChange={onChangeNumberOfTickets}
+        id="numberOfUnits"
+        name="numberOfUnits"
+        value={formData.numberOfUnits}
+        onChange={onChangeInput}
       />
 
       <label htmlFor="fullName">Full Name:</label>
@@ -78,10 +90,10 @@ const PaymentPage = () => {
         callback={handlePaymentSuccess}
         close={handlePaymentFailure}
         embed={false}
-        reference={`ticket_${Date.now()}`}
+        reference={`purchase_${Date.now()}`}
         email={formData.email}
         amount={totalAmount * 100} // Paystack amount is in kobo (1 Naira = 100 kobo)
-        publicKey={"pk_live_b05bf0b0e44aa8f20a04529d6d05b4779aebd72b"}
+        publicKey={publicKey}
         channels={['card', 'bank']}
         currency="NGN" // Nigerian Naira currency code
       />
