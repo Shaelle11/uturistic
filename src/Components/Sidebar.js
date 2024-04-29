@@ -1,19 +1,33 @@
-import React from 'react';
-import './Sidebar.css'; // Ensure you create this CSS file
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; 
 
-function Sidebar() {
+import './Sidebar.css';
+
+const Sidebar = () => {
+    const [isActive, setIsActive] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsActive(!isActive);
+    };
+
     return (
-        <div className="sidebar">
+        <div className='sidebar_container'>
+              <button className="sidebar-toggle" onClick={toggleSidebar}>
+                <div className="bar"></div>
+                <div className="bar"></div>
+                <div className="bar"></div>
+            </button>
+        <div className={`sidebar ${isActive ? 'active' : ''}`}>   
             <ul className="sidebar-links">
-                <li><Link to="uturistic/">Home</Link></li>
-                <li><Link to="uturistic/events">Events</Link></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#about">About</a></li>
-                <li><button onClick={() => window.alert('Redirecting to tickets...')}><Link to="uturistic/payment">Get Your Tickets Now</Link></button></li>
+                <li><Link to="/" className='element'>Home</Link></li>
+                <li><Link to="/events" className='element'>Events</Link></li>
+                <li><Link to="/blog" className='element'>Blog</Link></li>
+                <li><Link to="/about" className='element'>About</Link></li>
+                <li><button onClick={() => window.alert('Redirecting to tickets...')}><Link className='btn' to="/payment">Get Your Tickets Now</Link></button></li>
             </ul>
         </div>
+        </div>
     );
-}
+};
 
 export default Sidebar;

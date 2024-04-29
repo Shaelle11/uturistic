@@ -1,50 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Components/Navbar';
 import CustomCursor from './Components/CustomCursor';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import PaymentPage from './Pages/PaymentPage';
 import Home from './Pages/Home';
 import Footer from './Components/Footer';
-import './App.css';
 import events from './Components/map';
 import EventPage from './Pages/EventPage';
 import EventsDetailsPage from './Pages/EventsDetailPage';
 import Sidebar from './Components/Sidebar';
+import './App.css';
 
 function App() {
-  const [showSidebar, setShowSidebar] = useState(false);
+    const [showSidebar, setShowSidebar] = useState(window.innerWidth <= 650);
 
-  useEffect(() => {
-      const handleResize = () => {
-          if (window.innerWidth <= 650) {
-              setShowSidebar(true);
-          } else {
-              setShowSidebar(false);
-          }
-      };
+    useEffect(() => {
+        const handleResize = () => {
+            setShowSidebar(window.innerWidth <= 650);
+        };
 
-      handleResize();
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-  }, []);
-  return (
-    <Router>
-    <div>
-      
-      <Navbar />
-      <CustomCursor classname="cursor"/>
-      {showSidebar ? <Sidebar /> : <Navbar />}
-      <Routes>
-      <Route path="uturistic/" element={<Home/>} />
-      <Route path="uturistic/events" element ={<EventPage events={events}/> }/>
-      <Route path="uturistic/payment" element={<PaymentPage/>} />
-      <Route path="uturistic/events/:id"
-          element={<EventsDetailsPage events={events} />}/>
-      </Routes>
-      <Footer />
-      </div>
-      </Router>
-  );
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    return (
+        <Router>
+            <div>
+                <Navbar />         
+                < Sidebar />
+                <CustomCursor classname="cursor" />
+                <Routes>
+                    <Route index path="/" element={<Home />}/>
+                        <Route path="/events" element={<EventPage events={events} />} />
+                        <Route path="/payment" element={<PaymentPage />} />
+                        <Route path="/events/:id" element={<EventsDetailsPage events={events} />} />
+                       
+                    
+                </Routes>
+                <Footer />
+            </div>
+        </Router>
+    );
 }
 
 export default App;

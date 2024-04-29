@@ -13,7 +13,7 @@ function EventPage({ events }) {
             <div className="event-details">
               <h3 className="event-title">{event.title}</h3>
               <p className="event-date">{event.date}</p>
-              <Link to={`/events/${event.id}`} className="learn-more-btn">Learn More</Link>
+              <Link to={`${event.id}`} className="learn-more-btn">Learn More</Link>
             </div>
           </div>
         ))}

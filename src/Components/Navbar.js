@@ -8,11 +8,11 @@ function Navbar() {
         <nav className="navbar">
             <img className="navbar-logo" width={50} height={50} src={logo} alt="Logo" />
             <ul className="nav-links">
-                <li><Link to="uturistic/">Home</Link></li>
-                <li><Link to="uturistic/events">Events</Link></li>
+                <li><Link to="/">Home</Link></li> {/* Added slash before "uturistic" */}
+                <li><Link to="/events">Events</Link></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#about">About</a></li>
-                <li><button onClick={() => window.alert('Redirecting to tickets...')}><Link to="uturistic/payment">Get Your Tickets Now</Link></button></li>
+                <li><button onClick={() => window.alert('Redirecting to tickets...')}><Link to="/payment">Get Your Tickets Now</Link></button></li>
             </ul>
         </nav>
     );

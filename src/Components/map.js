@@ -3,7 +3,7 @@ const events = [
         id: 1,
         title: "Kaduna Gaming Convention",
         description: "Join us for a dive into the future of art and design. Explore new trends and innovative creations from top futurists in the field.",
-        image: "../KAGCON 2.jpg",
+        image: "../Assets/KAGCON 2.jpg",
         date: "2024-05-15"
     },
     {

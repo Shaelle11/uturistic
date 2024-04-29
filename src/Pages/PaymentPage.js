@@ -11,7 +11,7 @@ const PaymentPage = () => {
 
   const [totalAmount, setTotalAmount] = useState(1000);
 
-  const publicKey = 'your_paystack_public_key'; // Replace with your Paystack public key
+  const publicKey = 'pk_live_b05bf0b0e44aa8f20a04529d6d05b4779aebd72b'; // Replace with your Paystack public key
 
   const handlePaymentSuccess = (response) => {
     console.log('Payment successful:', response);
@@ -81,7 +81,7 @@ const PaymentPage = () => {
         reference={`ticket_${Date.now()}`}
         email={formData.email}
         amount={totalAmount * 100} // Paystack amount is in kobo (1 Naira = 100 kobo)
-        publicKey={"pk_test_51483c12c88f754b47f5d08405c28222a90fbdaf"}
+        publicKey={"pk_live_b05bf0b0e44aa8f20a04529d6d05b4779aebd72b"}
         channels={['card', 'bank']}
         currency="NGN" // Nigerian Naira currency code
       />
