@@ -12,7 +12,7 @@ function Navbar() {
                 <li><Link to="/events">Events</Link></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#about">About</a></li>
-                <li><button onClick={() => window.alert('Redirecting to tickets...')}><Link to="/payment">Get Your Tickets Now</Link></button></li>
+                <li><button onClick={() => window.alert('Redirecting to tickets...')}><Link className='btn' to="/payment">Get Your Tickets Now</Link></button></li>
             </ul>
         </nav>
     );

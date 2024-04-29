@@ -82,8 +82,10 @@
     transform: scale(1.05);
     color: white;
 }
-.btn{
+.navbar button .btn:hover,
+.navbar button .btn:focus{
       color: white;
+      text-decoration: none;
 }
 
 /* Sidebar Styles */
