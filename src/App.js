@@ -30,7 +30,7 @@ function App() {
                 < Sidebar />
                 <CustomCursor classname="cursor" />
                 <Routes>
-                    <Route index path="/" element={<Home />}/>
+                    <Route index path="/uturistic" element={<Home />}/>
                         <Route path="/events" element={<EventPage events={events} />} />
                         <Route path="/payment" element={<PaymentPage />} />
                         <Route path="/events/:id" element={<EventsDetailsPage events={events} />} />

@@ -19,7 +19,7 @@ const Sidebar = () => {
             </button>
         <div className={`sidebar ${isActive ? 'active' : ''}`}>   
             <ul className="sidebar-links">
-                <li><Link to="/" className='element'>Home</Link></li>
+                <li><Link to="/uturistic" className='element'>Home</Link></li>
                 <li><Link to="/events" className='element'>Events</Link></li>
                 <li><Link to="/blog" className='element'>Blog</Link></li>
                 <li><Link to="/about" className='element'>About</Link></li>

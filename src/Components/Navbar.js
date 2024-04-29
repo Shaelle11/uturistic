@@ -8,7 +8,7 @@ function Navbar() {
         <nav className="navbar">
             <img className="navbar-logo" width={50} height={50} src={logo} alt="Logo" />
             <ul className="nav-links">
-                <li><Link to="/">Home</Link></li> {/* Added slash before "uturistic" */}
+                <li><Link to="/uturistic">Home</Link></li> {/* Added slash before "uturistic" */}
                 <li><Link to="/events">Events</Link></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#about">About</a></li>
