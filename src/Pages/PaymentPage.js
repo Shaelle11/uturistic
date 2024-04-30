@@ -1,102 +1,109 @@
 import React, { useState } from 'react';
 import { PaystackButton } from 'react-paystack';
+import Receipt from '../Components/Receipt'; 
 import './PaymentPage.css';
-import Receipt from '../Components/Receipt';
+
 
 const PaymentPage = () => {
   const [formData, setFormData] = useState({
-    paymentType: 'general',
-    numberOfUnits: 1,
     fullName: '',
     email: '',
+    program: 'general',
   });
+  const [paymentAmount, setPaymentAmount] = useState(1000);
   const [paymentSuccessful, setPaymentSuccessful] = useState(false);
-  const prices = {
-    general: 1000,
-    scavenger: 500,
-    displayAds: 3000,
-    vendors: 5000,
+  const [paymentDetails, setPaymentDetails] = useState({});
+  const [numberOfUnits, setNumberOfUnits] = useState(1);
+
+  const handleProgramChange = (program) => {
+    setFormData({...formData, program });
+    switch (program) {
+      case 'general':
+        setPaymentAmount(1000);
+        break;
+      case 'displayAds':
+        setPaymentAmount(3000);
+        break;
+      case 'vendors':
+        setPaymentAmount(6000);
+        break;
+      case 'scavenger':
+        setPaymentAmount(500);
+        break;
+      default:
+        setPaymentAmount(1000);
+        break;
+    }
   };
 
-  const totalAmount = prices[formData.paymentType] * formData.numberOfUnits;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-  const publicKey = 'pk_test_51483c12c88f754b47f5d08405c28222a90fbdaf'; // Replace with your Paystack public key
+  const handleUnitChange = (e) => {
+    const units = parseInt(e.target.value);
+    setNumberOfUnits(units >= 1 ? units : 1);
+  };
 
   const handlePaymentSuccess = (response) => {
-    console.log('Payment successful:', response);
-    setPaymentSuccessful(true); // Set payment status to successful
+    // Here we simulate payment verification directly in frontend
+    setPaymentSuccessful(true);
+    setPaymentDetails({
+      reference: response.reference,
+      status: 'success',
+      message: 'Thank you for your payment!'
+    });
   };
 
   const handlePaymentFailure = (response) => {
-    console.error('Payment failed:', response);
-    // Handle payment failure
+    setPaymentSuccessful(true);
+    setPaymentDetails({
+      reference: response.reference,
+      status: 'failed',
+      message: 'Payment failed. Please try again.'
+    });
   };
 
-  const onChangeInput = (event) => {
-    const { name, value } = event.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const closeReceiptPopup = () => {
+    setPaymentSuccessful(false); // Close the receipt popup
   };
 
   return (
     <div className="payment-container">
-      {!paymentSuccessful && (
-        <>
-          <h2>Buy Tickets</h2>
-          <select name="paymentType" value={formData.paymentType} onChange={onChangeInput}>
-            <option value="general">General Tickets (₦1000 each)</option>
-            <option value="scavenger">Scavenger Hunt (₦500 each)</option>
-            <option value="displayAds">Display Ads (₦3000 each)</option>
-            <option value="vendors">Vendors (₦5000 each)</option>
-          </select>
+      <h2>Buy Tickets</h2>
+      <input type="text" id="fullName" name="fullName" placeholder='Full Name' value={formData.fullName} onChange={handleInputChange} />
+      <input type="email" id="email" name="email" value={formData.email} placeholder='Email' onChange={handleInputChange} />
 
-          <label htmlFor="numberOfUnits">Number of Units:</label>
-          <input
-            type="number"
-            id="numberOfUnits"
-            name="numberOfUnits"
-            value={formData.numberOfUnits}
-            onChange={onChangeInput}
-          />
+      <select value={formData.program} onChange={(e) => handleProgramChange(e.target.value)}>
+        <option value="general">General Ticket (₦1000)</option>
+        <option value="displayAds">Display Ads (₦3000)</option>
+        <option value="vendors">Vendors (₦6000)</option>
+        <option value="scavenger">Scavenger Hunt (₦500)</option>
+      </select>
 
-          <label htmlFor="fullName">Full Name:</label>
-          <input
-            type="text"
-            id="fullName"
-            name="fullName"
-            value={formData.fullName}
-            onChange={onChangeInput}
-          />
+      <input type="number" id="numberOfUnits" name="numberOfUnits" value={numberOfUnits} min="1" onChange={handleUnitChange} />
 
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={onChangeInput}
-          />
+      <p>Total Amount: ₦{paymentAmount * numberOfUnits}</p>
 
-          <p>Total Amount: ₦{totalAmount}</p>
+      <PaystackButton
+        text="Pay Now"
+        className="paystack-button"
+        callback={handlePaymentSuccess}
+        close={handlePaymentFailure}
+        embed={false}
+        reference={`purchase_${Date.now()}`}
+        email={formData.email}
+        amount={paymentAmount * numberOfUnits * 100}
+        publicKey="pk_live_b05bf0b0e44aa8f20a04529d6d05b4779aebd72b"
+        channels={['card', 'bank']}
+        currency="NGN"
+      />
 
-          <PaystackButton
-            text="Pay Now"
-            className="paystack-button"
-            callback={handlePaymentSuccess}
-            close={handlePaymentFailure}
-            embed={false}
-            reference={`purchase_${Date.now()}`}
-            email={formData.email}
-            amount={totalAmount * 100} // Paystack amount is in kobo (1 Naira = 100 kobo)
-            publicKey={publicKey}
-            channels={['card', 'bank']}
-            currency="NGN"
-          />
-        </>
-      )}
-      {paymentSuccessful && <Receipt details={{ ...formData, amount: totalAmount }} />}
+
+      {paymentSuccessful && <Receipt isOpen={true} details={paymentDetails} onClose={closeReceiptPopup} />}
+      <p>For receipt verification, custom ticketing and to get your raffle number</p>
+      <a className='message' target='blank' rel='noopener' href='https://wa.me/message/XTBGJQNUXBA2E1'>Send Message</a>
     </div>
   );
 };

@@ -1,50 +1,60 @@
-/* PaymentPage.css */
-
 .payment-container {
-    max-width: 400px;
-    margin: 7rem auto;
-    padding: 4rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  .payment-container h2 {
-    margin-bottom: 20px;
-  }
-  
-  .payment-container label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .payment-container input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .payment-container p {
-    margin-top: 20px;
-  }
-  
-  .payment-container .paystack-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    text-align: center;
-    background-color: #725ac1;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .payment-container .paystack-button:hover {
-    background-color: #307d7e;
-  }
-  
+  max-width: 450px;
+  margin: auto;
+  margin-top: 4.5rem;
+  padding: 1.3rem 2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.payment-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.payment-container label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.payment-container input[type="text"],
+.payment-container input[type="email"],
+.payment-container select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.payment-container select {
+  appearance: none;
+}
+
+.payment-container p {
+  margin-bottom: 16px;
+}
+
+.payment-container .paystack-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color:#5a468d;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.payment-container .paystack-button:hover {
+  background-color: #307d7e;
+}
+
+.message{
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: #307d7e;
+}
