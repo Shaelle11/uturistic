@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './EventPage.css'; // Import CSS for styling
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function EventPage({ events }) {
   return (
@@ -9,7 +10,7 @@ function EventPage({ events }) {
       <div className="event-list">
         {events.map(event => (
           <div key={event.id} className="event-card">
-            <img src={event.image} alt={event.title} className="event-image" />
+            <LazyLoadImage src={event.image} alt={event.title} className="event-image" />
             <div className="event-details">
               <h3 className="event-title">{event.title}</h3>
               <p className="event-date">{event.date}</p>

@@ -10,7 +10,7 @@ const PaymentPage = () => {
     email: '',
     program: 'general',
   });
-  const [paymentAmount, setPaymentAmount] = useState(1000);
+  const [paymentAmount, setPaymentAmount] = useState(1015);
   const [paymentSuccessful, setPaymentSuccessful] = useState(false);
   const [paymentDetails, setPaymentDetails] = useState({});
   const [numberOfUnits, setNumberOfUnits] = useState(1);
@@ -19,19 +19,19 @@ const PaymentPage = () => {
     setFormData({...formData, program });
     switch (program) {
       case 'general':
-        setPaymentAmount(1000);
+        setPaymentAmount(1015);
         break;
       case 'displayAds':
-        setPaymentAmount(3000);
+        setPaymentAmount(3045);
         break;
       case 'vendors':
-        setPaymentAmount(6000);
+        setPaymentAmount(6090);
         break;
       case 'scavenger':
-        setPaymentAmount(500);
+        setPaymentAmount(507.5);
         break;
       default:
-        setPaymentAmount(1000);
+        setPaymentAmount(1015);
         break;
     }
   };
@@ -83,8 +83,12 @@ const PaymentPage = () => {
       </select>
 
       <input type="number" id="numberOfUnits" name="numberOfUnits" value={numberOfUnits} min="1" onChange={handleUnitChange} />
+      <span> 
+      <p>Total Amount: ₦{paymentAmount * numberOfUnits}
+      </p>
+          <small> 1.5% charges included</small>
 
-      <p>Total Amount: ₦{paymentAmount * numberOfUnits}</p>
+</span>
 
       <PaystackButton
         text="Pay Now"
